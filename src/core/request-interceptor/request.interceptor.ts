@@ -11,7 +11,9 @@ export default class RequestInterceptor implements NestInterceptor {
 
   intercept(
     context: ExecutionContext,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     next: CallHandler<any>,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): Observable<any> | Promise<Observable<any>> {
     const reqContextBuilder = new RequestContextBuilder(context);
     const reqContext = reqContextBuilder.build();

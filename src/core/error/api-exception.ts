@@ -16,7 +16,7 @@ export default class ApiException extends HttpException {
     });
   }
 
-  public static parseError(error: any): ApiException {
+  public static parseError(error: never): ApiException {
     return new ApiException({
       statusCode: this.getStatusCodeFrom(error),
       errorCode: EErrorCode.INTERNAL_SERVER_ERROR,
@@ -25,14 +25,17 @@ export default class ApiException extends HttpException {
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private static getStatusCodeFrom(error: any): HttpStatus {
     return error.status ?? HttpStatus.INTERNAL_SERVER_ERROR;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private static getMessageFrom(error: any): string {
     return error.response?.message ?? error.message ?? 'Unknown error';
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private static getDataFrom(error: any): any {
     return { stack: error.stack } ?? {};
   }

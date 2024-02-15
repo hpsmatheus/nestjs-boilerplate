@@ -21,6 +21,7 @@ export default class RequestContextBuilder {
     return this.getTrackIdFrom(headers);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private getTrackIdFrom(headers: any): string {
     if (!headers.trackId) {
       headers.trackId = uuid();
