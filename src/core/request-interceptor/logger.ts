@@ -8,6 +8,7 @@ export default class RequestLogger extends Logger {
     super();
   }
 
+  //test
   public reqStart(): void {
     const req = this.reqContext;
     const startTime = formatISO(req.startTime);
