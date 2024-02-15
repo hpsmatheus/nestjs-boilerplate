@@ -38,7 +38,8 @@ export default class RequestInterceptor implements NestInterceptor {
     this.logger.reqEnd();
   }
 
-  private handleErrorOnRequest(error: unknown): ApiException {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private handleErrorOnRequest(error: any): ApiException {
     const exception =
       error instanceof ApiException ? error : ApiException.parseError(error);
     this.logger.reqError(exception);

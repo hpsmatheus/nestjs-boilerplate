@@ -16,7 +16,8 @@ export default class ApiException extends HttpException {
     });
   }
 
-  public static parseError(error: never): ApiException {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public static parseError(error: any): ApiException {
     return new ApiException({
       statusCode: this.getStatusCodeFrom(error),
       errorCode: EErrorCode.INTERNAL_SERVER_ERROR,
