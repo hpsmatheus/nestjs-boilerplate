@@ -1,25 +1,21 @@
-import { Controller, Get } from '@nestjs/common';
-import ExampleService from './example.service';
-import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { SwaggerResponse } from 'src/core/swagger-response';
-import ExampleResponse from 'src/typings/example/example.response.dto';
+import { Controller, Get, Query } from '@nestjs/common'
+import ExampleService from './example.service'
+import { ApiResponse, ApiTags } from '@nestjs/swagger'
+import { SwaggerResponse } from 'src/core/swagger-response'
+import ExampleResponse from 'src/typings/example/example.response.dto'
+import ExampleParams from 'src/typings/example/example.params.dto'
 
 @Controller('example')
 @ApiTags('Example')
 export default class ExampleController {
-  constructor(private readonly exampleService: ExampleService) {}
+	constructor(private readonly exampleService: ExampleService) {}
 
-  @Get()
-  @ApiResponse(SwaggerResponse.Ok(ExampleResponse))
-  @ApiResponse(SwaggerResponse.InternalError)
-  public example(): ExampleResponse {
-    return this.exampleService.example();
-  }
-
-  @Get('/error')
-  @ApiResponse(SwaggerResponse.Ok(ExampleResponse))
-  @ApiResponse(SwaggerResponse.InternalError)
-  public error(): ExampleResponse {
-    throw new Error('Error example');
-  }
+	@Get()
+	@ApiResponse(SwaggerResponse.Ok(ExampleResponse))
+	@ApiResponse(SwaggerResponse.InputValidationError)
+	@ApiResponse(SwaggerResponse.InternalError)
+	public example(@Query() params: ExampleParams): ExampleResponse {
+		if (params.name === 'Maria') throw new Error('Invalid name!')
+		return this.exampleService.example(params.name)
+	}
 }

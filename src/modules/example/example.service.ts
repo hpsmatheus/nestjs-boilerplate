@@ -1,7 +1,7 @@
-import ExampleResponse from 'src/typings/example/example.response.dto';
+import ExampleResponse from 'src/typings/example/example.response.dto'
 
 export default class ExampleService {
-  public example(): ExampleResponse {
-    return { message: 'Hello, World!' };
-  }
+	public example(name: string): ExampleResponse {
+		return { message: `Hello, ${name} !` }
+	}
 }

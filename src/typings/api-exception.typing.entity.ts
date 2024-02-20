@@ -1,11 +1,11 @@
-import { HttpStatus } from '@nestjs/common';
+import { HttpStatus } from '@nestjs/common'
 
 export default class ApiExceptionTyping {
-  statusCode: HttpStatus;
+	statusCode: HttpStatus
 
-  errorCode: string;
+	errorCode: string
 
-  message: string;
+	message: string
 
-  data?: unknown;
+	data?: unknown
 }

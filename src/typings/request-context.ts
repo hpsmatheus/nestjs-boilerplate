@@ -1,9 +1,9 @@
 export default class RequestContext {
-  stringfiedBody: string;
+	stringfiedBody: string
 
-  trackId: string;
+	trackId: string
 
-  startTime: number;
+	startTime: number
 
-  metadata: string;
+	metadata: string
 }
