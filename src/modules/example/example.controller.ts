@@ -1,11 +1,6 @@
 import { Controller, Get, Query } from '@nestjs/common'
 import ExampleService from './example.service'
-import {
-	ApiInternalServerErrorResponse,
-	ApiOkResponse,
-	ApiResponse,
-	ApiTags,
-} from '@nestjs/swagger'
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger'
 import ExampleResponse from 'src/typings/example/example.response.dto'
 import ExampleParams from 'src/typings/example/example.params.dto'
 
